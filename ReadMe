@@ -1,0 +1,28 @@
+YIGONG WANG    SBU-ID:109973706
+JUN	ZENG	   SBU-ID:109811026
+
+
+1. 	The modifications to ensure that only unicast addresses are bound:
+	Use a loop to build up the socket and bound to the IP address the function get_ifi_info_plus(professor given) return except the first loopback address.
+
+ 	Our implementation of the array of structures described above:
+ 	Store the socket file description, the IP address and network mask returned from the given function into the servIF and cliIF structure. Then the subnet address is got by the binary and operation of IP address and the relative network mask. 
+
+2. 	The details of our modifications to the code of Section 22.5:
+	1> The parameters in struct rtt_info have set to int except rtt_base;
+	2> All the multiply and divide operation have changed into binary operation;
+	3> The return value of rtt_start is divided by 1000;
+	4> RTT_RXTMIN is set to 1000 msec, RTT_RXTMAX is set to 3000 msec and RTT_MAXNREXMT is set to 12;
+	5> All the second parameters have been changed into millisecond;
+	6> rtt_timeout passes its value through the function rtt_minmax, after doubling the RTO.
+
+
+3. 	The TCP mechanisms we implemented:
+	When the transmittion starts, the conjection window size(cwin) is set to 1, and ssthresh is set to be equal to the cwin. Then every time a successful transmittion, cwin doubles. When the sender loses its datagram and receives the duplicate ack from the receiver, the cwin and ssthresh both divide half. If there is no ack received, the cwin is set to 1 and the ssthresh divides half. If then it is successful to transmit the datagrams, cwin is set to be equal to ssthresh. When the cwin bigger than ssthresh, it changes from double increasing into linear increasing. After the sender time out 12 times, it judges that the receiver is shut down.
+
+
+4.	Sender notifying receiver of the last datagram:
+	Add one more parameter-fin into the hdr structure, and set it as 0 when the file stream has not reached the end. When the file stream is read to the end, fin is set to 1 and pass to the client with the hdr structure to notify receiver that this is the last datagram.
+
+	Clean closing: 
+	After send to the server with the last ack, the client uses a recvmsg and the rtt mechanism to keep listen for the retransmitted datagram for a certain time. Here we set the time as 15 seconds. Then after 15 seconds, the recvmsg times out and the client closes.
