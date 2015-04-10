@@ -46,5 +46,5 @@ cli_recv.o: cli_recv.c
 
 
 clean:
-	rm test test.o client client.o server server.o get_ifi_info_plus.o rtt.o serv_send.o serv_recv.o cli_send.o cli_recv.o
+	rm test test.o client client.o server server.o get_ifi_info_plus.o rtt.o serv_send.o serv_recv.o cli_send.o cli_recv.o *~
 
