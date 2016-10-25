@@ -2,13 +2,13 @@
 #include	"math.h"
 #include    "unprtt.h"
 
-#define IF_NUM 10 						// The maximum client interface number.
-#define CONN_TIME_OUT 200				//
-#define MAX_NAME_LEN 255
-#define WAIT_TIME 2
-#define INPUT_FILE_NAME "client.in"
-#define DGRAM_LEN 512
-#define RESIVE_BUFF_SIZE 512
+#define IF_NUM 10 					// The maximum client interface number.
+#define CONN_TIME_OUT 200				// defining connection time out to be 200
+#define MAX_NAME_LEN 255				// defining max length of name to be 255
+#define WAIT_TIME 2					//defining wait time to be 2		
+#define INPUT_FILE_NAME "client.in"			//declaring the input file name 
+#define DGRAM_LEN 512					//defining diagram length to be 512
+#define RESIVE_BUFF_SIZE 512				// defining reserve buffer size to be 512
 
 //
 struct client_in{
