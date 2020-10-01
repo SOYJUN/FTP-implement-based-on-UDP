@@ -3,11 +3,11 @@
 #include    "unprtt.h"
 
 #define IF_NUM 10 						// The maximum client interface number.
-#define CONN_TIME_OUT 200				//
-#define MAX_NAME_LEN 255
-#define WAIT_TIME 2
-#define INPUT_FILE_NAME "client.in"
-#define DGRAM_LEN 512
+#define CONN_TIME_OUT 200				        // Define connection timout to be 200
+#define MAX_NAME_LEN 255                                        // Define maximum length of name to be 255
+#define WAIT_TIME 2                                             // Define wait time to be 2
+#define INPUT_FILE_NAME "client.in"                             // Define input file name as "client.in"
+#define DGRAM_LEN 512                                           // Define diagram length to be 512
 #define RESIVE_BUFF_SIZE 512
 
 //
